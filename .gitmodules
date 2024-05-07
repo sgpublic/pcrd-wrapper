@@ -1,3 +1,3 @@
 [submodule "GoWasmWrapper"]
 	path = GoWasmWrapper
-	url = git@github.com:sgpublic/GoWasmWrapper.git
+	url = https://github.com/sgpublic/GoWasmWrapper.git
