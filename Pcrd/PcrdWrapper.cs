@@ -4,19 +4,25 @@ using WebAssembly;
 
 namespace Pcrd;
 
-public class PcrdWrapper(string wasmPath)
+public class PcrdWrapper
 {
+    private readonly string wasmPath;
+    public PcrdWrapper(string wasmPath)
+    {
+        this.wasmPath = wasmPath;
+    }
+    
     public string CreateSign(string rawJson, string nonce)
     {
         if (_wrapper == null)
         {
             ReloadWasm();
         }
-        return _wrapper.RunEvent(1, [
+        return _wrapper.RunEvent(1, new Object[] {
             rawJson,
             nonce,
             calcHash(nonce)
-        ]) as string ?? "";
+        }) as string ?? "";
     }
 
     private GoWrapper? _wrapper;
